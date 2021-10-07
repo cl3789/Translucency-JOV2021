@@ -1,0 +1,365 @@
+---
+title: "Untitled"
+author: "Chenxi Liao"
+date: "8/25/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tidymodels)
+library(glmnet)
+library(ggplot2)
+```
+
+
+## Use Logistic Regression to Prediction observers' binary classification 
+```{r}
+get_LR <- function(filename, seed_num){ person <- read.csv(filename) %>%
+  drop_na()
+  #print(person)
+  set.seed(seed_num)
+  person <- person[-c(1:2)]
+  person$label <- as.factor(person$label)
+  person
+  
+  #data_split <- initial_split(person, prop = 0.5, strata = label)
+  data_split <- initial_split(person, prop = 0.8, strata = label)
+  data_training <- training(data_split)
+  data_testing <- testing(data_split)
+  
+  model_spec <- logistic_reg(penalty = tune()) %>%
+    set_engine("glmnet", path_values = c(0, 10^seq(-10, 1, length.out = 20))) %>%
+    set_mode("classification")
+  
+  rec_spec <- recipe(label ~ see_throughness + glossiness + glow + softness + density, data = data_training) %>%
+    #step_dummy(all_nominal()) %>%
+    step_normalize(all_predictors()) 
+  
+  prep(rec_spec) %>% bake(new_data = NULL)
+  
+  model_wf <- workflow() %>%
+    add_model(model_spec) %>%
+    add_recipe(rec_spec)
+  
+  ## Set 10-fold CV using train_vowel
+  
+  folds <- vfold_cv(data = data_training, v = 3)
+  
+   ## Search the best param
+  param_grid <- grid_regular(penalty(), levels = 10)
+
+  tune_fit <- tune_grid(object = model_wf,
+                        resamples = folds,
+                        grid = param_grid,
+                        control = control_grid(verbose = TRUE)
+   )
+  
+  #print(collect_metrics(tune_fit))
+  
+  ## Find the best param
+  best_lambda <- select_best(tune_fit)
+  #print(best_lambda)
+  
+  ## Finalize fit
+  ##Fit the model within each of the folds. And save the prediction result
+  ridge_final <- finalize_workflow(model_wf, best_lambda)
+  
+  fold_result <- fit_resamples(object = ridge_final, resamples = folds, 
+                                 control = control_resamples(save_pred = TRUE))
+
+  cv_result <- collect_metrics(fold_result)
+  print(cv_result)
+  mean_accuracy <- cv_result$mean[1]
+  std_accuracy <- cv_result$std_err[1]
+  
+  #print(std_accuracy)
+
+  #ridge_final_fit <- fit(ridge_final, data_training)
+  #tidy(ridge_final_fit)
+  
+  #prediction <- predict(ridge_final_fit, new_data = data_testing)
+
+  #bind_cols(
+  #  prediction,
+  #  data_testing
+  #) %>%
+  #accuracy(truth = label, estimate =.pred_class)
+  #conf_mat(truth = label, estimate=.pred_class)%>%
+  #autoplot(type = "heatmap") 
+  
+  return (list(mean_accuracy, std_accuracy))
+}
+
+```
+
+```{r}
+LR_cv <- function(filename, seed_num){ person <- read.csv(filename) %>%
+  drop_na()
+  
+  #print(person)
+  
+  set.seed(seed_num)
+  person <- person[-c(1:2)]
+  person$label <- as.factor(person$label)
+  person
+  
+  model_spec <- logistic_reg(penalty = tune()) %>%
+    set_engine("glmnet", path_values = c(0, 10^seq(-10, 1, length.out = 20))) %>%
+    set_mode("classification")
+  
+  rec_spec <- recipe(label ~ see_throughness + glossiness + glow + softness + density, data = person) %>%
+    #step_dummy(all_nominal()) %>%
+    step_normalize(all_predictors()) 
+  
+  prep(rec_spec) %>% bake(new_data = NULL)
+  
+  model_wf <- workflow() %>%
+    add_model(model_spec) %>%
+    add_recipe(rec_spec)
+  
+  ## Set 10-fold CV using train_vowel
+  
+  folds <- vfold_cv(data = person, v = 3, strata = label)
+  
+   ## Search the best param
+  param_grid <- grid_regular(penalty(), levels = 10)
+
+  tune_fit <- tune_grid(object = model_wf,
+                        resamples = folds,
+                        grid = param_grid,
+                        control = control_grid(verbose = TRUE)
+   )
+  
+  #print(collect_metrics(tune_fit))
+  
+  ## Find the best param
+  best_lambda <- select_best(tune_fit)
+  print(best_lambda)
+  
+  ## Finalize fit
+  ##Fit the model within each of the folds. And save the prediction result
+  ridge_final <- finalize_workflow(model_wf, best_lambda)
+  
+  fold_result <- fit_resamples(object = ridge_final, resamples = folds, 
+                                 control = control_resamples(save_pred = TRUE))
+
+  cv_result <- collect_metrics(fold_result)
+  print(cv_result)
+  mean_accuracy <- cv_result$mean[1]
+  std_accuracy <- cv_result$std_err[1]
+  
+  #ridge_final_fit <- fit(ridge_final, person)
+  #prediction <- predict(ridge_final_fit, new_data = person)
+
+  #print(bind_cols(
+  #  prediction,
+  #  person
+  #) %>%
+  #conf_mat(truth = label, estimate=.pred_class)%>%
+  #autoplot(type = "heatmap"))
+
+  
+  return (list(mean_accuracy, std_accuracy))
+}
+
+```
+
+
+```{r}
+collect_lr_cv <- function(folder){
+  
+  datalist = list()
+
+  for (id in 1:20) {
+      #filename <- str_c("gray_people/Gray Person",id, ".csv")
+      filename <- str_c(folder,id, ".csv")
+      cv_res <- LR_cv(filename,  seed_num=5)
+      dat <- data.frame(mean = cv_res[[1]], std_err = cv_res[[2]])
+      dat$id <- id
+      datalist[[id]] <- dat 
+      }
+
+  all_people <- do.call(rbind, datalist)
+  return(all_people)
+
+}
+
+
+plot_lr_cv <- function(df,start_id, end_id, bar_color){
+  df %>% 
+  ggplot(aes(x = id, y = mean)) +
+  geom_bar(aes(x = id, y = mean), stat="identity", fill=bar_color, alpha=0.7) +
+  geom_errorbar(aes(x = id, ymin = mean-std_err, ymax = mean+std_err), width=0.25, colour="orange", alpha=0.9, size=1.3) +
+  geom_hline(yintercept = 0.5, colour = "yellow", linetype = "dashed") +
+  xlab("Observer") +
+  ylab("Prediction accuracy") +
+  ggtitle("Prediction of Binary classification label using semantic ratings") +
+  scale_x_continuous(breaks = seq(1, 20, 1), labels=seq(start_id, end_id, 1)) +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text.x = element_text(size = 14),
+    axis.text.y = element_text(size = 14)
+  )
+}
+  
+```
+
+```{r}
+gray <- collect_lr_cv("gray_people/Gray Person")
+
+plot_lr_cv(gray, 21, 40, "dodgerblue4")
+```
+
+
+```{r}
+color <- collect_lr_cv("color_people/Person")
+
+color
+
+plot_lr_cv(color, 1, 20, "red3")
+
+```
+```{r}
+LR_cv("gray_people/Gray Person1.csv",  seed_num=5)
+```
+
+```{r}
+collect_p <- function(filename, seed_num){ person <- read.csv(filename) %>%
+  drop_na()
+  
+  #print(person)
+  
+  set.seed(seed_num)
+  person <- person[-c(1:2)]
+  person$label <- as.factor(person$label)
+  person
+  
+  #data_split <- initial_split(person, prop = 0.5, strata = label)
+  data_split <- initial_split(person, prop = 0.66, strata = label)
+  data_training <- training(data_split)
+  data_testing <- testing(data_split)
+  
+  lr_spec <- logistic_reg(penalty = 0.006) %>%
+    set_engine("glm") %>%
+    set_mode("classification")
+  
+  ## Use Lags and  Volume as predictors.
+  lr_fit <- lr_spec %>%
+    fit(label ~ see_throughness + glossiness + glow + softness + density, data = data_training)
+  
+  #print(result)
+  
+  ## Set 10-fold CV using train_vowel
+  p.values <- coef(summary(lr_fit$fit))[,4]
+  return(p.values) 
+}
+
+p1 <- collect_p("gray_people/Gray Person15.csv",  seed_num=25)
+p1
+```
+
+```{r}
+collect_one_fold <- function(folder, seed){
+  
+  datalist = list()
+
+  for (id in 1:20) {
+      print(id)
+      filename <- str_c(folder,id, ".csv")
+      p_s <- collect_p(filename,  seed_num=seed)
+      dat <- data.frame(see_throughness = p_s[[2]], glossiness = p_s[[3]], glow = p_s[[4]], softness = p_s[[5]], density = p_s[[6]])
+      dat$id <- id
+      datalist[[id]] <- dat 
+      }
+
+  all_people <- do.call(rbind, datalist)
+  return(all_people)
+
+}
+
+#p_f1 <- collect_one_fold("color_people/Person",5)
+#p_f1
+
+
+color_folder <- "color_people/Person"
+gray_folder <- "gray_people/Gray Person"
+
+substr(color_folder, 1,2)
+
+collect_all_fold <- function(folder_name){
+  
+  datalist = list()
+
+  for (seed in c(19,20,21)) {
+      print(seed)
+      p_fold <- collect_one_fold(folder_name, seed = seed)
+      dat <- data.frame(see_throughness_count = sum(p_fold$see_throughness <0.05, na.rm=TRUE),
+                        glossiness_count = sum(p_fold$glossiness <0.05, na.rm=TRUE),
+                        glow_count = sum(p_fold$glow <0.05, na.rm=TRUE), 
+                        softness = sum(p_fold$softness <0.05, na.rm=TRUE), 
+                        density_count = sum(p_fold$density <0.05, na.rm=TRUE),
+                        condition = substr(folder_name, 1,2))
+      dat$seed <- seed
+      
+      datalist[[seed]] <- dat 
+      }
+  
+  all_p <- do.call(rbind, datalist)
+  return(all_p)
+
+}
+
+
+color_p <- collect_all_fold(color_folder)
+gray_p <- collect_all_fold(gray_folder)
+
+gray_p
+
+#sum(p_f1$see_throughness <0.05, na.rm=TRUE)
+process_p <- function(p_mat){
+  df <- data.frame (median  = apply(p_mat[1:5],2,median),
+                  max = apply(p_mat[1:5],2,max),
+                  min = apply(p_mat[1:5],2,min)
+                  ) %>% 
+     # head(5) %>% 
+      mutate(diff_max_med = max - median,
+             diff_min_med = median -min
+             ) %>%
+      mutate_if(is.integer,as.numeric)
+   
+  df<-tibble::rownames_to_column(df, "attribute") 
+  return(df)
+}
+
+color_res <- process_p(color_p)
+color_res$condition <- "color"
+gray_res <- process_p(gray_p)
+gray_res$condition <- "gray"
+
+both_cond <- rbind(color_res, gray_res)
+both_cond
+
+
+both_cond %>% 
+  ggplot(aes(x = attribute, y = median, fill = factor(condition))) +
+  geom_bar(aes(x = attribute, y = median), stat="identity", alpha=0.7, position = position_dodge()) +
+  geom_errorbar(aes(x = attribute, ymin = median-diff_min_med, ymax = median+diff_max_med), position = position_dodge(width = 0.9), width=0.25, colour="orange", alpha=0.9, size=1.3) +
+  xlab("attribute") +
+  ylab("count") +
+  ggtitle("Prediction of Binary classification label using semantic ratings") +
+  theme_bw() +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    axis.text.x = element_text(size = 6),
+    axis.text.y = element_text(size = 14)
+  )
+```
+
