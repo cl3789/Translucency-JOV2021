@@ -1,0 +1,135 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(readxl)
+library(fmsb)
+```
+
+```{r}
+mat_list <- read_csv("./exp data/Material Naming trials.csv")[, c(1 , 2)]
+
+get_diff <- function(path){
+  data <- path %>% 
+  excel_sheets() %>% 
+  set_names() %>% 
+  map(read_excel, range = cell_cols("H"), path = path) 
+  
+  res_list <- list() 
+  for (i in seq_along(data)) {
+    res_list[[i]] <- data.frame(data[[i]], mat_list) %>%
+      mutate(responses = str_sub(responses, 8,-3)) %>%
+      mutate_at(
+        vars(one_of('responses', 'Category')),
+        funs(case_when(
+          substr(., 1, 4) == "Food" ~ "Food in general",
+          . == "Ivory" | . == "Marble/Stone/Concrete" ~ "Marble/Stone/Concrete/Ivory",
+          . == "Plastic/Synthetic" | . == "Rubber" ~ "Plastic/Synthetic/Rubber",
+          TRUE ~ .))
+      ) %>%
+      mutate(diff = ifelse(responses == Category, 0, 1))
+  }
+  
+  sum_diff = 0
+  
+  for (i in 1:length(res_list)){
+    current <- res_list[[i]]$diff
+    sum_diff <- current + sum_diff
+  }
+  
+  image_diff_cat <- data.frame(image_name = mat_list$image_name, true_cat = res_list[[1]]$Category, sum_diff = sum_diff)
+  
+  return(image_diff_cat)
+}
+
+
+path_color <- "./exp data/Naming Color 15.xlsx"
+path_gray <- "./exp data/Naming Gray 15.xlsx"
+
+color_diff <- get_diff(path_color)
+gray_diff <- get_diff(path_gray)
+
+# Get all results
+diff_all <- data.frame(image_name = mat_list$image_name, true_cat = color_diff$true_cat, 
+                       sum_diff_color = color_diff$sum_diff, sum_diff_gray = gray_diff$sum_diff)
+
+
+diff_all
+```
+
+Run Mann-Whitney-U test of color and grayscale condition
+```{r}
+wilcox.test(diff_all$sum_diff_gray, diff_all$sum_diff_color, paired = FALSE, alternative = "greater")
+```
+
+
+```{r}
+plot_radar <- function(mat_cat){
+  transposed <- diff_all %>%
+  filter(true_cat == mat_cat) %>%
+  arrange(sum_diff_color) %>%
+  select(-("true_cat")) %>%
+  t() %>% 
+  as.data.frame()
+  
+  names(transposed) <- transposed[1,]
+  transposed <- transposed[-1,] %>%
+    mutate_if(is.character, as.numeric)
+  
+  print(transposed)
+  
+  transposed <- rbind(rep(15,300) , rep(0,300) , transposed)
+  colors_border2= c("red", rgb(0.3,0.4,0.8,0.7))
+  colors_in2= "dodgerblue4"
+  
+  # plot with default options:
+  radarchart( transposed  , axistype=0 , 
+      #custom polygon
+      pcol=colors_border2, plwd=0.5 , plty=1,
+      #custom the grid
+      cglcol="grey", cglty=1, axislabcol="grey", caxislabels=seq(0,15,4), cglwd=0.5,
+      #custom labels
+      vlcex=0.2, title = mat_cat
+      )
+}
+
+```
+
+```{r}
+plot_radar("Crystal/quartz/mineral/jade")
+```
+
+```{r}
+plot_radar("Glass")
+```
+
+```{r}
+plot_radar("Plastic/Synthetic/Rubber")
+```
+
+```{r}
+plot_radar("Wax")
+```
+
+```{r}
+plot_radar("Food in general")
+```
+
+```{r}
+plot_radar("Marble/Stone/Concrete/Ivory")
+```
+
+```{r}
+plot_radar("Metal")
+```
+
+```{r}
+plot_radar("Soap")
+```
