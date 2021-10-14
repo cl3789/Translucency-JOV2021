@@ -40,6 +40,7 @@ get_diff <- function(path){
   sum_diff = 0
   
   for (i in 1:length(res_list)){
+    print(i)
     current <- res_list[[i]]$diff
     sum_diff <- current + sum_diff
   }

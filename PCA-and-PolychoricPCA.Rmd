@@ -1,0 +1,114 @@
+---
+title: "PCA-plot"
+author: "Chenxi Liao"
+date: "8/25/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(factoextra)
+library(ggfortify)
+library(tidymodels)
+library(psych)
+```
+
+
+## PCA plot of 300 images
+```{r}
+plot_pca <- function(filename){ original_data <- read.csv(filename)
+  print(original_data)
+  #original_data <- person[-c(1:2)]
+  original_data <- original_data %>%
+    arrange(total.vote)
+  original_data$label <- as.factor(original_data$label)
+  
+  features <- original_data[c("average_see_through", "average_gloss", "average_softness", "average_density", "average_glow")]
+
+ 
+  feature_pca = prcomp(features, center = TRUE, scale. = TRUE)
+  print(feature_pca)
+  
+  print(fviz_pca_var(feature_pca,
+                     col.circle = "white",
+                     col.var = "black",
+                     repel = TRUE,
+                     title = filename))
+  
+  
+  contribution1<- tidy(feature_pca, matrix = "loadings") %>%
+    filter(PC == 1) %>%
+    ggplot(aes(abs(value), column)) +
+    geom_col() + ggtitle("Contributions to the 1st principle component")
+  print(contribution1)
+  
+  contribution2<- tidy(feature_pca, matrix = "loadings") %>%
+    filter(PC == 2) %>%
+    ggplot(aes(abs(value), column)) +
+    geom_col() + ggtitle("Contributions to the 2ndt principle component")
+  print(contribution2)
+  
+
+  biplot <- autoplot(feature_pca, data = original_data,
+        loadings = TRUE, colour = 'label',
+        loadings.label = TRUE, loadings.label.size = 3, size = 2.5,
+        main = paste("PCA for ", filename),
+        xlim = c(-0.2, 0.2),
+        ylim = c(-0.2, 0.2),
+        ) 
+  print(biplot + scale_color_manual(values = c("purple","orange","cyan")))
+
+
+}
+
+```
+
+```{r}
+plot_pca("./exp data/color_BC_SAR/color_labeled.csv")
+```
+
+```{r}
+plot_pca("./exp data/gray_BC_SAR/gray_labeled.csv")
+```
+
+
+# Polychoric PCA of individual observers
+```{r}
+plot_poly <- function(filename, cor_type){ person <- read.csv(filename)
+  
+  original_data <- person[-c(1:2)]
+  print(original_data)
+  original_data$label <- as.factor(original_data$label)
+  
+  #features <- person[-c(1:2, 8)]
+  features <- person[c("see_throughness", "glossiness", "softness", "glow", "density")]
+  labels <- person[-c(1:7)]
+  #print(features)
+  
+  feature_pca = principal(features, nfactors = 2, residuals = FALSE, rotate="none", cor=cor_type)
+  print(feature_pca)
+  biplot <- biplot(feature_pca) 
+  
+
+}
+```
+
+
+Polychoric PCA for color obsevers
+```{r}
+#plot_poly("./exp data/color_BC_SAR/Color Person1.csv", "poly")
+plot_poly("./exp data/color_BC_SAR/Color Person8.csv", "poly")
+#plot_pca("./exp data/color_BC_SAR/Color Person1.csv")
+```
+Polychoric PCA for grayscale obsevers
+```{r}
+#plot_poly("./exp data/gray_BC_SAR/Gray Person1.csv", "poly")
+plot_poly("./exp data/gray_BC_SAR/Gray Person13.csv", "poly")
+```
+
+
+
+

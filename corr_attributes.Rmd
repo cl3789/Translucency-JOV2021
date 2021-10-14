@@ -1,0 +1,47 @@
+---
+title: "corr_attributs"
+author: "Chenxi Liao"
+date: "7/7/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(corrplot)
+library(rstatix)
+library(ggpubr)
+```
+
+
+```{r}
+plot_corr_mat <- function(filename){
+all <- read.csv(filename)
+features <- all[c("average_see_through", "average_gloss", "average_softness", "average_density", "average_glow")]
+M = cor(features, method="kendall", use="pairwise") 
+testRes = cor.mtest(features, conf.level = 0.99)
+testRes
+
+print(testRes$p)
+
+pch=1
+corrplot(M, type="lower", method = "color", order = 'FPC',  p.mat = testRes$p, sig.level = 0.005,  insig = "pch", pch =4,
+        addCoef.col = "black", tl.col = "black", tl.srt = 30, diag = FALSE)
+}
+
+```
+
+Unlike the Main paper, here the statistically insignificant correlations are crossed out (p > 0.005).
+
+```{r}
+# Color condition
+plot_corr_mat("./exp data/color_BC_SAR/color_labeled.csv")
+
+# Grayscale condition
+plot_corr_mat("./exp data/gray_BC_SAR/gray_labeled.csv")
+```
+
+
+
