@@ -13,6 +13,8 @@ The stimuli used in the grayscale condition in the main paper. The RGB images ar
 **Gray_contrast preserved**
 The stimuli used in the grayscale condition in the supplementary material. The RGB images are converted to the grayscale by using a Contrast Preserved Decolorization method in OpenCV (Lu et al. (2012)).
 
+**Label_flipped_image**
+Different types of classification label flips when the images are converted to grayscale (extracted Lightness channel). For example, “Opaque -> Translucent” means the image flips its label from opaque to translucent when it is converted to grayscale.
 
 ## Experiment data
 **Results Catalogue.csv**
