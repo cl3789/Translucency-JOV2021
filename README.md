@@ -2,6 +2,8 @@
 
 Chenxi Liao, [Masataka Sawayama](https://www.mswym.com/), [Bei Xiao](https://sites.google.com/site/beixiao/?pli=1&authuser=2)
 
+Manuscript is available on [biorxiv](https://www.biorxiv.org/content/10.1101/2021.10.18.464695v1) 
+
 ## Stimuli
 
 **300_ImgColor**
