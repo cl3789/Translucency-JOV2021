@@ -1,0 +1,288 @@
+image_name,Food in general,Non-food,Category,Category Food,Compare
+pomegranate2,15,0,Food in general,Food in general,Same as ground truth 
+dougao4,15,0,Food in general,Food in general,Same as ground truth 
+watermelonchunk2,15,0,Food in general,Food in general,Same as ground truth 
+cookie3,15,0,Food in general,Food in general,Same as ground truth 
+cookie2,15,0,Food in general,Food in general,Same as ground truth 
+honeycomb3,15,0,Food in general,Food in general,Same as ground truth 
+caramelcandy1,15,0,Food in general,Food in general,Same as ground truth 
+jello5,15,0,Food in general,Food in general,Same as ground truth 
+mochi11,15,0,Food in general,Food in general,Same as ground truth 
+limeslice6,15,0,Food in general,Food in general,Same as ground truth 
+kiwi7,15,0,Food in general,Food in general,Same as ground truth 
+fishmeat1,15,0,Food in general,Food in general,Same as ground truth 
+meat10,15,0,Food in general,Food in general,Same as ground truth 
+SlicedBanana2,15,0,Food in general,Food in general,Same as ground truth 
+pineapple2,15,0,Food in general,Food in general,Same as ground truth 
+peeledpeach2,15,0,Food in general,Food in general,Same as ground truth 
+choppedpotato3,15,0,Food in general,Food in general,Same as ground truth 
+choppedpotato2,15,0,Food in general,Food in general,Same as ground truth 
+dragonfruit4,15,0,Food in general,Food in general,Same as ground truth 
+fishmeat6,15,0,Food in general,Food in general,Same as ground truth 
+peeledlemon5,15,0,Food in general,Food in general,Same as ground truth 
+rmeat3BB,15,0,Food in general,Food in general,Same as ground truth 
+peeledorange1,15,0,Food in general,Food in general,Same as ground truth 
+baozi2,15,0,Food in general,Food in general,Same as ground truth 
+dougao3,15,0,Food in general,Food in general,Same as ground truth 
+peeledpumkin2,15,0,Food in general,Food in general,Same as ground truth 
+strawberry1,15,0,Food in general,Food in general,Same as ground truth 
+jello2,15,0,Food in general,Food in general,Same as ground truth 
+grapefruit5,15,0,Food in general,Food in general,Same as ground truth 
+grapefruit4,15,0,Food in general,Food in general,Same as ground truth 
+dougao1,15,0,Food in general,Food in general,Same as ground truth 
+bearBB,15,0,Food in general,Food in general,Same as ground truth 
+pickle1,15,0,Food in general,Food in general,Same as ground truth 
+peeledlemon3,15,0,Food in general,Food in general,Same as ground truth 
+persimmon1,15,0,Food in general,Food in general,Same as ground truth 
+tulumba4,15,0,Food in general,Food in general,Same as ground truth 
+tulumba1,15,0,Food in general,Food in general,Same as ground truth 
+dragonfruit7,15,0,Food in general,Food in general,Same as ground truth 
+peeledlemon2,15,0,Food in general,Food in general,Same as ground truth 
+peachslice2,15,0,Food in general,Food in general,Same as ground truth 
+cheese14,15,0,Food in general,Food in general,Same as ground truth 
+cream4,15,0,Food in general,Food in general,Same as ground truth 
+egg6,15,0,Food in general,Food in general,Same as ground truth 
+shrimp1,15,0,Food in general,Food in general,Same as ground truth 
+cantaloupe1,15,0,Food in general,Food in general,Same as ground truth 
+fishmeat5,15,0,Food in general,Food in general,Same as ground truth 
+peeledpumkin4,15,0,Food in general,Food in general,Same as ground truth 
+onion4,15,0,Food in general,Food in general,Same as ground truth 
+sweetpotato1,15,0,Food in general,Food in general,Same as ground truth 
+tuna4BB,15,0,Food in general,Food in general,Same as ground truth 
+Scallops3,15,0,Food in general,Food in general,Same as ground truth 
+cheese11,15,0,Food in general,Food in general,Same as ground truth 
+peeledorange3,15,0,Food in general,Food in general,Same as ground truth 
+tuna10BB,15,0,Food in general,Food in general,Same as ground truth 
+raspberry3,15,0,Food in general,Food in general,Same as ground truth 
+PearlOnion3,15,0,Food in general,Food in general,Same as ground truth 
+cheese8,15,0,Food in general,Food in general,Same as ground truth 
+cantaloupe3,15,0,Food in general,Food in general,Same as ground truth 
+PearlOnion2,15,0,Food in general,Food in general,Same as ground truth 
+carrotslice1,15,0,Food in general,Food in general,Same as ground truth 
+salmon3,15,0,Food in general,Food in general,Same as ground truth 
+kiwi2,15,0,Food in general,Food in general,Same as ground truth 
+orangewedge5,15,0,Food in general,Food in general,Same as ground truth 
+salmon5,15,0,Food in general,Food in general,Same as ground truth 
+limeslice1,15,0,Food in general,Food in general,Same as ground truth 
+marshmallow2,15,0,Food in general,Food in general,Same as ground truth 
+avacado6,15,0,Food in general,Food in general,Same as ground truth 
+orange7,15,0,Food in general,Food in general,Same as ground truth 
+caviar2,15,0,Food in general,Food in general,Same as ground truth 
+cucumberslice2,15,0,Food in general,Food in general,Same as ground truth 
+caramelcandy3,15,0,Food in general,Food in general,Same as ground truth 
+waffle3,15,0,Food in general,Food in general,Same as ground truth 
+eggyolk8,15,0,Food in general,Food in general,Same as ground truth 
+honeydew2,15,0,Food in general,Food in general,Same as ground truth 
+cheesekeycap,15,0,Food in general,Non-food,Different
+cheesecake4,15,0,Food in general,Food in general,Same as ground truth 
+tofu6,15,0,Food in general,Food in general,Same as ground truth 
+peeledpeach1,15,0,Food in general,Food in general,Same as ground truth 
+Scallops4,15,0,Food in general,Food in general,Same as ground truth 
+pickleslice1,15,0,Food in general,Food in general,Same as ground truth 
+lemonwedge4,15,0,Food in general,Food in general,Same as ground truth 
+bread2,15,0,Food in general,Food in general,Same as ground truth 
+tofu5,15,0,Food in general,Food in general,Same as ground truth 
+raspberry2,15,0,Food in general,Food in general,Same as ground truth 
+onion1,15,0,Food in general,Food in general,Same as ground truth 
+orangewedge1,14,1,Food in general,Food in general,Same as ground truth 
+tuna2,14,1,Food in general,Food in general,Same as ground truth 
+butter4,14,1,Food in general,Food in general,Same as ground truth 
+spinach3,14,1,Food in general,Food in general,Same as ground truth 
+ice5,14,1,Food in general,Food in general,Same as ground truth 
+turnipslice1,14,1,Food in general,Food in general,Same as ground truth 
+DriedCantaloupe4,14,1,Food in general,Food in general,Same as ground truth 
+meat4BB,14,1,Food in general,Food in general,Same as ground truth 
+icecream1,14,1,Food in general,Food in general,Same as ground truth 
+DragonfruitJelly2,14,1,Food in general,Food in general,Same as ground truth 
+mangojelly3,14,1,Food in general,Food in general,Same as ground truth 
+caramelcandy5,14,1,Food in general,Food in general,Same as ground truth 
+persimmon2,14,1,Food in general,Food in general,Same as ground truth 
+tofu2,14,1,Food in general,Food in general,Same as ground truth 
+sugarcube5,14,1,Food in general,Food in general,Same as ground truth 
+dumpling3,14,1,Food in general,Food in general,Same as ground truth 
+hamslice2,14,1,Food in general,Food in general,Same as ground truth 
+meat3BB,14,1,Food in general,Food in general,Same as ground truth 
+icecream5,14,1,Food in general,Food in general,Same as ground truth 
+pomegranate1,14,1,Food in general,Food in general,Same as ground truth 
+DriedCantaloupe3,14,1,Food in general,Food in general,Same as ground truth 
+tofu7,14,1,Food in general,Food in general,Same as ground truth 
+tuna11,14,1,Food in general,Food in general,Same as ground truth 
+meat1BB,14,1,Food in general,Food in general,Same as ground truth 
+DragonfruitJelly1,14,1,Food in general,Food in general,Same as ground truth 
+honeycomb4,14,1,Food in general,Food in general,Same as ground truth 
+turnipslice2,14,1,Food in general,Food in general,Same as ground truth 
+meat5BB,14,1,Food in general,Food in general,Same as ground truth 
+pineapple5,14,1,Food in general,Food in general,Same as ground truth 
+egg7,14,1,Food in general,Food in general,Same as ground truth 
+strawberry2,14,1,Food in general,Food in general,Same as ground truth 
+sweetpotato3,14,1,Food in general,Food in general,Same as ground truth 
+cheese12,14,1,Food in general,Food in general,Same as ground truth 
+fudge5,13,2,Food in general,Food in general,Same as ground truth 
+plastic6BB,13,2,Food in general,Non-food,Different
+tofu3,13,2,Food in general,Food in general,Same as ground truth 
+marzipan3,13,2,Food in general,Food in general,Same as ground truth 
+beewax4,13,2,Food in general,Non-food,Different
+mangojelly5,13,2,Food in general,Food in general,Same as ground truth 
+marshmallow5,13,2,Food in general,Food in general,Same as ground truth 
+gummi30,13,2,Food in general,Food in general,Same as ground truth 
+fishmeat7,13,2,Food in general,Food in general,Same as ground truth 
+snowbow2,12,3,Food in general,Food in general,Same as ground truth 
+butter1,12,3,Food in general,Food in general,Same as ground truth 
+JellyMooncake1,12,3,Food in general,Food in general,Same as ground truth 
+mantou1,12,3,Food in general,Food in general,Same as ground truth 
+mochi13,12,3,Food in general,Food in general,Same as ground truth 
+cheese16,11,4,Food in general,Food in general,Same as ground truth 
+JellyMooncake5,11,4,Food in general,Food in general,Same as ground truth 
+fudge4,11,4,Food in general,Food in general,Same as ground truth 
+Scallops2,11,4,Food in general,Food in general,Same as ground truth 
+gummi29,11,4,Food in general,Food in general,Same as ground truth 
+sugarcube2,11,4,Food in general,Food in general,Same as ground truth 
+egg5,11,4,Food in general,Food in general,Same as ground truth 
+mochi8,11,4,Food in general,Food in general,Same as ground truth 
+fudge2,11,4,Food in general,Food in general,Same as ground truth 
+sugarcube4,10,5,Food in general,Food in general,Same as ground truth 
+glycerin6,10,5,Food in general,Non-food,Different
+honeycandy2,10,5,Food in general,Food in general,Same as ground truth 
+mangojelly1,9,6,Unsure,Food in general,Different
+GlycerinSoap2,9,6,Unsure,Non-food,Different
+beewax12,9,6,Unsure,Non-food,Different
+glycerin5,9,6,Unsure,Non-food,Different
+wax4BB,8,7,Unsure,Non-food,Different
+keycap2,8,7,Unsure,Non-food,Different
+waxcube1,8,7,Unsure,Non-food,Different
+honeysoap1,8,7,Unsure,Non-food,Different
+chickennugget3,7,8,Unsure,Food in general,Different
+glycerin4,7,8,Unsure,Non-food,Different
+snowball3,7,8,Unsure,Food in general,Different
+GlycerinSoap3,7,8,Unsure,Non-food,Different
+honey1,7,8,Unsure,Food in general,Different
+cheese7,7,8,Unsure,Food in general,Different
+beewax9,6,9,Unsure,Non-food,Different
+ambersoap,6,9,Unsure,Non-food,Different
+cheesewaxBB,6,9,Unsure,Non-food,Different
+mochi1,6,9,Unsure,Food in general,Different
+tofu11,6,9,Unsure,Food in general,Different
+JellyMooncake6,6,9,Unsure,Food in general,Different
+cheesewax4,5,10,Non-food,Non-food,Same as ground truth 
+beeswax3,5,10,Non-food,Non-food,Same as ground truth 
+cheese3,5,10,Non-food,Food in general,Different
+ice2,5,10,Non-food,Food in general,Different
+beeswax1,5,10,Non-food,Non-food,Same as ground truth 
+bun3,5,10,Non-food,Non-food,Same as ground truth 
+marble1,4,11,Non-food,Non-food,Same as ground truth 
+chocolate13,4,11,Non-food,Food in general,Different
+resincube1,4,11,Non-food,Non-food,Same as ground truth 
+soap7,4,11,Non-food,Non-food,Same as ground truth 
+plastic7BB,4,11,Non-food,Non-food,Same as ground truth 
+beewax6,4,11,Non-food,Non-food,Same as ground truth 
+PinkWax2,3,12,Non-food,Non-food,Same as ground truth 
+soapBB,3,12,Non-food,Non-food,Same as ground truth 
+fluorite7,3,12,Non-food,Non-food,Same as ground truth 
+butter2,3,12,Non-food,Food in general,Different
+colorsoap2,3,12,Non-food,Non-food,Same as ground truth 
+botryoidal2,3,12,Non-food,Non-food,Same as ground truth 
+maripan1,3,12,Non-food,Food in general,Different
+mochi17,3,12,Non-food,Food in general,Different
+toy1,3,12,Non-food,Non-food,Same as ground truth 
+waxcube3,2,13,Non-food,Non-food,Same as ground truth 
+limesoap1,2,13,Non-food,Non-food,Same as ground truth 
+wax13,2,13,Non-food,Non-food,Same as ground truth 
+frostedglass1,2,13,Non-food,Non-food,Same as ground truth 
+soywax4,2,13,Non-food,Non-food,Same as ground truth 
+yellowsoap1,2,13,Non-food,Non-food,Same as ground truth 
+stickytoy1,2,13,Non-food,Non-food,Same as ground truth 
+olivesoap1,2,13,Non-food,Non-food,Same as ground truth 
+botryoidal1,2,13,Non-food,Non-food,Same as ground truth 
+urethane1,2,13,Non-food,Non-food,Same as ground truth 
+tarsoap1,2,13,Non-food,Non-food,Same as ground truth 
+toy2BB,2,13,Non-food,Non-food,Same as ground truth 
+fluorite1,2,13,Non-food,Non-food,Same as ground truth 
+beewax7,2,13,Non-food,Non-food,Same as ground truth 
+plastic1BB,2,13,Non-food,Non-food,Same as ground truth 
+rockcandy1,1,14,Non-food,Food in general,Different
+greensoap1,1,14,Non-food,Non-food,Same as ground truth 
+lucitefruit3,1,14,Non-food,Non-food,Same as ground truth 
+soywax2,1,14,Non-food,Non-food,Same as ground truth 
+greencrystal,1,14,Non-food,Non-food,Same as ground truth 
+beewax8,1,14,Non-food,Non-food,Same as ground truth 
+bowl1,1,14,Non-food,Non-food,Same as ground truth 
+resin2,1,14,Non-food,Non-food,Same as ground truth 
+eraser3,1,14,Non-food,Non-food,Same as ground truth 
+soap8,1,14,Non-food,Non-food,Same as ground truth 
+wax3,1,14,Non-food,Non-food,Same as ground truth 
+wax14,1,14,Non-food,Non-food,Same as ground truth 
+granite2,1,14,Non-food,Non-food,Same as ground truth 
+bluejelly,1,14,Non-food,Food in general,Different
+greenstone1,1,14,Non-food,Non-food,Same as ground truth 
+lucitefruit1,1,14,Non-food,Non-food,Same as ground truth 
+marble3,1,14,Non-food,Non-food,Same as ground truth 
+palmivory3,1,14,Non-food,Non-food,Same as ground truth 
+jade5BB,1,14,Non-food,Non-food,Same as ground truth 
+jello1,1,14,Non-food,Food in general,Different
+tarsoap2,1,14,Non-food,Non-food,Same as ground truth 
+lightbulb1,1,14,Non-food,Non-food,Same as ground truth 
+brick12,1,14,Non-food,Non-food,Same as ground truth 
+bowl6,0,15,Non-food,Non-food,Same as ground truth 
+ivory2,0,15,Non-food,Non-food,Same as ground truth 
+copperBB,0,15,Non-food,Non-food,Same as ground truth 
+colorsoap1,0,15,Non-food,Non-food,Same as ground truth 
+jade11,0,15,Non-food,Non-food,Same as ground truth 
+yellowstone6BB,0,15,Non-food,Non-food,Same as ground truth 
+sulfursoap2,0,15,Non-food,Non-food,Same as ground truth 
+rubber7,0,15,Non-food,Non-food,Same as ground truth 
+crystal3,0,15,Non-food,Non-food,Same as ground truth 
+ice6,0,15,Non-food,Food in general,Different
+metal13,0,15,Non-food,Non-food,Same as ground truth 
+ivory1,0,15,Non-food,Non-food,Same as ground truth 
+quartz3,0,15,Non-food,Non-food,Same as ground truth 
+brownrock,0,15,Non-food,Non-food,Same as ground truth 
+wood14,0,15,Non-food,Non-food,Same as ground truth 
+fluorite2,0,15,Non-food,Non-food,Same as ground truth 
+steel3,0,15,Non-food,Non-food,Same as ground truth 
+fluorite6,0,15,Non-food,Non-food,Same as ground truth 
+woodcube1,0,15,Non-food,Non-food,Same as ground truth 
+sulfursoap1,0,15,Non-food,Non-food,Same as ground truth 
+whitejade3,0,15,Non-food,Non-food,Same as ground truth 
+metal17,0,15,Non-food,Non-food,Same as ground truth 
+plasticgear1,0,15,Non-food,Non-food,Same as ground truth 
+glasschess3,0,15,Non-food,Non-food,Same as ground truth 
+palmivory1,0,15,Non-food,Non-food,Same as ground truth 
+chalk3,0,15,Non-food,Non-food,Same as ground truth 
+cheesewax5,0,15,Non-food,Non-food,Same as ground truth 
+cup4BB,0,15,Non-food,Non-food,Same as ground truth 
+greenston2,0,15,Non-food,Non-food,Same as ground truth 
+concrete2,0,15,Non-food,Non-food,Same as ground truth 
+marblestatue2,0,15,Non-food,Non-food,Same as ground truth 
+Angel3,0,15,Non-food,Non-food,Same as ground truth 
+quartz54,0,15,Non-food,Non-food,Same as ground truth 
+glasschess1,0,15,Non-food,Non-food,Same as ground truth 
+cup14BB,0,15,Non-food,Non-food,Same as ground truth 
+quartz80,0,15,Non-food,Non-food,Same as ground truth 
+wax2,0,15,Non-food,Non-food,Same as ground truth 
+quartz77,0,15,Non-food,Non-food,Same as ground truth 
+soap3BB,0,15,Non-food,Non-food,Same as ground truth 
+rockcandy2,0,15,Non-food,Food in general,Different
+glasscup1,0,15,Non-food,Non-food,Same as ground truth 
+palmivory4,0,15,Non-food,Non-food,Same as ground truth 
+tire1,0,15,Non-food,Non-food,Same as ground truth 
+glasschess2,0,15,Non-food,Non-food,Same as ground truth 
+jade12,0,15,Non-food,Non-food,Same as ground truth 
+fluorite4,0,15,Non-food,Non-food,Same as ground truth 
+chalk1,0,15,Non-food,Non-food,Same as ground truth 
+steelcube,0,15,Non-food,Non-food,Same as ground truth 
+resin3,0,15,Non-food,Non-food,Same as ground truth 
+quartz64,0,15,Non-food,Non-food,Same as ground truth 
+stone1,0,15,Non-food,Non-food,Same as ground truth 
+metal8,0,15,Non-food,Non-food,Same as ground truth 
+frostedglass3,0,15,Non-food,Non-food,Same as ground truth 
+metal14,0,15,Non-food,Non-food,Same as ground truth 
+copper3,0,15,Non-food,Non-food,Same as ground truth 
+frostedglass2,0,15,Non-food,Non-food,Same as ground truth 
+bluefluorite1,0,15,Non-food,Non-food,Same as ground truth 
+clay12,0,15,Non-food,Non-food,Same as ground truth 
+selenite3,0,15,Non-food,Non-food,Same as ground truth 
+bronze1,0,15,Non-food,Non-food,Same as ground truth 
+quartz10BB,0,15,Non-food,Non-food,Same as ground truth 
+bronzehead,0,15,Non-food,Non-food,Same as ground truth 
+selenite2,0,15,Non-food,Non-food,Same as ground truth 
+jade13,0,15,Non-food,Non-food,Same as ground truth 

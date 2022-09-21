@@ -2,12 +2,12 @@
 
 Chenxi Liao, [Masataka Sawayama](https://www.mswym.com/), [Bei Xiao](https://sites.google.com/site/beixiao/?pli=1&authuser=2)
 
-Manuscript is available on [biorxiv](https://www.biorxiv.org/content/10.1101/2021.10.18.464695v1) 
+Paper is available on [JOV](https://jov.arvojournals.org/article.aspx?articleid=2778489) 
 
 ## Stimuli
 
 **300_ImgColor**
-The stimuli used in the color condition in the main paper.
+The stimuli used in the color condition in the main paper. 
 
 **300_ImgGray_Lightness**
 The stimuli used in the grayscale condition in the main paper. The RGB images are converted to CIELab space, and we extracted, duplicated, and then concatenated the lightness channel.
@@ -25,6 +25,10 @@ Contains the description of data of results in "exp data" folder
 ## Analysis
 **Code Catalogue.csv**
 Contains the description of codes used for the analysis in "Analysis" folder
+
+## Note
+Authors do not own the copyright for some of the images in "300_ImgColor" folder. 
+Authors own the copyright for the images in "own_copyright_images_stimuli" and "replaced_images_with_copyright" folder.
 
 
 
